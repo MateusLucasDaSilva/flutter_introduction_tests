@@ -7,4 +7,16 @@ class Item {
     required this.name,
     required this.value,
   });
+
+  @override
+  bool operator ==(covariant Item other) {
+    if (identical(this, other)) {
+      return true;
+    }
+
+    return other.name == name && other.value == value;
+  }
+
+  @override
+  int get hashCode => name.hashCode ^ value.hashCode;
 }

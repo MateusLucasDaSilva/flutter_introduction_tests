@@ -6,8 +6,14 @@ class Carrinho {
     required this.items,
   });
 
-  double get total => items.fold<double>(0.0,
-      (double previousValue, Item element) => previousValue + element.value);
+  double get total {
+    if (items.isEmpty) {
+      throw CarrinhoException();
+    }
+
+    return items.fold<double>(0.0,
+        (double previousValue, Item element) => previousValue + element.value);
+  }
 
   double get totalComImpost10PorCento {
     double imposto = 0.0;
@@ -27,3 +33,5 @@ class Carrinho {
   double get imposto10PorCento => total * 0.10;
   double get imposto20PorCento => total * 0.20;
 }
+
+class CarrinhoException implements Exception {}
