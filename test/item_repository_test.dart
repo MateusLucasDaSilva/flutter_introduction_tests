@@ -46,4 +46,6 @@ void main() {
       );
     });
   });
+
+  group('Testando repository mocado', () {});
 }
